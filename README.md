@@ -1,2 +1,2 @@
 # cs262-web-service
-Chippi Chippi Chappa Chappa Dubi Dubi Daba Daba Magico Mi Dubi Dubi Boom Boom Boom Boom
+01000010 01100001 01111010 01101001 01101110 01100111 01100001
