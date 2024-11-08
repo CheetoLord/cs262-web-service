@@ -23,9 +23,6 @@
  *
  * @author: kvlinden
  * @date: Summer, 2020
- *
- * @stolen by: pbl4
- * @date: fall, 2024
  */
 
 // Set up the database connection.
@@ -50,7 +47,6 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/', readHelloMessage);
-router.get('/beans', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
 router.put('/players/:id', updatePlayer);
