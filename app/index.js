@@ -67,7 +67,7 @@ function returnDataOr404(res, data) {
 }
 
 function readHelloMessage(req, res) {
-  res.send('Hello, CS 262 Monopoly service!');
+  res.send('Hello, CS 262 Monopoly service! We are using env variables: ' + process.env.DB_SERVER + ' ' + process.env.DB_PORT + ' ' + process.env.DB_DATABASE + ' ' + process.env.DB_USER + ' ' + process.env.DB_PASSWORD);
 }
 
 function readPlayers(req, res, next) {
