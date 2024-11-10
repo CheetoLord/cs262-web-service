@@ -50,7 +50,6 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/', readHelloMessage);
-router.get('/beans', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
 router.put('/players/:id', updatePlayer);
@@ -59,8 +58,6 @@ router.delete('/players/:id', deletePlayer);
 
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-console.log(`This is a test! I hope this shows up.`)
 
 // Implement the CRUD operations.
 
@@ -77,7 +74,6 @@ function readHelloMessage(req, res) {
 }
 
 function readPlayers(req, res, next) {
-  console.log(`Reading players`)
   db.many('SELECT * FROM Player')
     .then((data) => {
       res.send(data);
