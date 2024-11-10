@@ -47,6 +47,7 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/', readHelloMessage);
+router.get('/beans', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
 router.put('/players/:id', updatePlayer);
