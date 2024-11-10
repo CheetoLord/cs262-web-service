@@ -57,6 +57,8 @@ router.delete('/players/:id', deletePlayer);
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+console.log(`This is a test! I hope this shows up.`)
+
 // Implement the CRUD operations.
 
 function returnDataOr404(res, data) {
@@ -68,11 +70,11 @@ function returnDataOr404(res, data) {
 }
 
 function readHelloMessage(req, res) {
-  res.send('Hello, CS 262 Monopoly service! We are using env variables: ' + process.env.DB_SERVER + ' ' + process.env.DB_PORT + ' ' + process.env.DB_DATABASE + ' ' + process.env.DB_USER + ' ' + process.env.DB_PASSWORD);
+  res.send('Hello, CS 262 Monopoly service!');
 }
 
 function readPlayers(req, res, next) {
-  console.log("Hello!");
+  console.log(`Reading players`)
   db.many('SELECT * FROM Player')
     .then((data) => {
       res.send(data);
