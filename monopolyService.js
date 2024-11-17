@@ -106,7 +106,7 @@ function readPlayerGames(req, res, next) {
     });
 }
 
-function readPlayesrGames(req, res, next) {
+function readPlayersGames(req, res, next) {
   db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID')
     .then((data) => {
       returnDataOr404(res, data);
