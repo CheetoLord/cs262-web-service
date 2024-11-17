@@ -43,6 +43,7 @@ const db = pgp({
 // Configure the server and its routes.
 
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -59,16 +60,8 @@ router.get('/playergames/:id', readPlayerGames);
 //router.post('/players', createPlayer);
 //router.delete('/players/:id', deletePlayer);
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    if (req.method === 'OPTIONS') {
-        res.sendStatus(200);
-    } else {
-        next();
-    }
-});
+app.use(cors())
+app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Implement the CRUD operations.
