@@ -52,9 +52,11 @@ router.use(express.json());
 router.get('/', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
-router.put('/players/:id', updatePlayer);
-router.post('/players', createPlayer);
-router.delete('/players/:id', deletePlayer);
+router.get('/playerGames/', readPlayersGames);
+router.get('/playerGames/:id', readPlayerGames);
+//router.put('/players/:id', updatePlayer);
+//router.post('/players', createPlayer);
+//router.delete('/players/:id', deletePlayer);
 
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -85,6 +87,26 @@ function readPlayers(req, res, next) {
 
 function readPlayer(req, res, next) {
   db.oneOrNone('SELECT * FROM Player WHERE id=${id}', req.params)
+    .then((data) => {
+      returnDataOr404(res, data);
+    })
+    .catch((err) => {
+      next(err);
+    });
+}
+
+function readPlayerGames(req, res, next) {
+  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID AND Player.ID = ${id};', req.params)
+    .then((data) => {
+      returnDataOr404(res, data);
+    })
+    .catch((err) => {
+      next(err);
+    });
+}
+
+function readPlayesrGames(req, res, next) {
+  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID;')
     .then((data) => {
       returnDataOr404(res, data);
     })
