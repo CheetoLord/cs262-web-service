@@ -53,7 +53,7 @@ router.get('/', readHelloMessage);
 router.get('/sanity', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
-router.get('/playergames/', readPlayersGames);
+router.get('/playergames', readPlayersGames);
 router.get('/playergames/:id', readPlayerGames);
 //router.put('/players/:id', updatePlayer);
 //router.post('/players', createPlayer);
@@ -97,7 +97,7 @@ function readPlayer(req, res, next) {
 }
 
 function readPlayerGames(req, res, next) {
-  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID AND Player.ID = ${id};', req.params)
+  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID AND Player.ID = ${id}', req.params)
     .then((data) => {
       returnDataOr404(res, data);
     })
@@ -107,7 +107,7 @@ function readPlayerGames(req, res, next) {
 }
 
 function readPlayesrGames(req, res, next) {
-  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID;')
+  db.many('SELECT emailaddress, name, time, gameID, playerID, score, cash, piecePosition FROM Player, Game, PlayerGame WHERE playerID = Player.ID AND gameID = Game.ID')
     .then((data) => {
       returnDataOr404(res, data);
     })
