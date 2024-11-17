@@ -50,10 +50,11 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/', readHelloMessage);
+router.get('/sanity', readHelloMessage);
 router.get('/players', readPlayers);
 router.get('/players/:id', readPlayer);
-router.get('/playerGames/', readPlayersGames);
-router.get('/playerGames/:id', readPlayerGames);
+router.get('/playergames/', readPlayersGames);
+router.get('/playergames/:id', readPlayerGames);
 //router.put('/players/:id', updatePlayer);
 //router.post('/players', createPlayer);
 //router.delete('/players/:id', deletePlayer);
